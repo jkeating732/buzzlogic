@@ -1,10 +1,24 @@
 from ultralytics import YOLO
 
 # Load a model
-model = YOLO("best.pt")  # pretrained YOLO11n model
+model = YOLO("models/model.pt")  # pretrained model
 
-image = input("Enter an image path or URL:\n")
-results = model([image])  # return a list of Results objects
+numImages = int(input("Enter the number of images to feed the model:\n"))
+
+if numImages >= 1:
+    print(str(numImages) + " images selected")
+
+    iteration = 0
+    images = []
+
+    while iteration < numImages: 
+        image = input("Enter an image path or URL:\n")
+        images.append(image)
+        iteration += 1
+else:
+    print("Please enter a whole number greater than zero")
+
+results = model(images)  # return a list of Results objects
 
 # Process results list
 for result in results:
