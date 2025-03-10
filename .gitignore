@@ -2,3 +2,6 @@ dataset-omni/
 dataset-mites/
 .env
 runs/
+*.png
+*.jpg
+*.jpeg
