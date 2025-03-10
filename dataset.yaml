@@ -1,0 +1,16 @@
+path: /path/to/dataset
+train: images/train
+val: images/val
+
+nc: 3
+
+# Class names
+names: ['Drone', 'Mite', 'Queen']
+
+# Weights are IMPORTANT! If you change # of annotations or classes, calculate new weights by:
+# (TOTAL ANNOTATIONS) / (NUM CLASSES * ANNOTATIONS FOR CLASS X)
+# You can find total annotations and annotations for a class by running annotations.py
+# Your project.json MUST be updated for this to properly work
+
+weights: [0.87544, 1.05579, 1.08921]
+obb: True
