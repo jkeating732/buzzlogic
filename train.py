@@ -8,7 +8,7 @@ os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"  # Log every validation b
 os.environ["COMET_PROJECT_NAME"] = "beehive"
 
 
-model = YOLO("model.pt")
+model = YOLO("models/model.pt") # replace with weighted model
 
 torch.cuda.empty_cache()
 
