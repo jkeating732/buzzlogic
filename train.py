@@ -3,10 +3,12 @@ import torch
 from ultralytics import YOLO
 import os
 
+##### ONLY FOR USE WITH COMET.ML #####
+#####     https://comet.com      #####
 os.environ["COMET_PROJECT_NAME"] = "beehive"
-os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"  # Log every validation batch
+os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"
 os.environ["COMET_PROJECT_NAME"] = "beehive"
-
+######################################
 
 model = YOLO("models/model.pt") # replace with weighted model
 
