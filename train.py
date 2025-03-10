@@ -7,7 +7,6 @@ import os
 #####     https://comet.com      #####
 os.environ["COMET_PROJECT_NAME"] = "beehive"
 os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"
-os.environ["COMET_PROJECT_NAME"] = "beehive"
 ######################################
 
 model = YOLO("models/model.pt") # replace with weighted model
