@@ -1,8 +1,11 @@
-### buzzlogic
+## buzzlogic
 YOLO11 detect model for the modern beehive
 
+### Ultralytics
+This model runs with the help of the Ultralytics Python library. If you are not familiar with the `train()` method or something else, I highly recommend you visit the [Ultralytics docs page](https://docs.ultralytics.com/modes/train/).
+
 ### Structuring / Important Info
-Models that can be trained off of are located in the `models/` directory. Only use `models/yolo11-obb` if you plan on training a new model from scratch. Otherwise, use `models/model.pt`. Specify the model in `train.py` like so:
+Models that can be trained off of are located in the `models/` directory. Only use `models/yolo11-obb.yaml` if you plan on training a new model from scratch. Otherwise, use `models/model.pt`. Specify the model in `train.py` like so:
 
 ```python
 model = YOLO("models/model.pt") # replace with weighted model
