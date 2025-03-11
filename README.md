@@ -15,17 +15,7 @@ The `organization` directory contains tools that will help you organize and prep
 
 Modify weights in `dataset.yaml`. Use the formula `(TOTAL ANNOTATIONS) / (NUM CLASSES * ANNOTATIONS FOR CLASS X)` to calculate the weight for each class. 
 
-The `organization` directory also contains `sort.py`. This organizes the labels and images in your dataset into `train/` and `val/` subdirectories. 80% of images and their respective labels will go into the `train/` subdirectories, while the remaining 20% will be randomly organized into the `val/` subdirectories. It is vital that you do this prior to training to ensure even representation of data. Remember to set the environment variable `DATASET` to the path of your dataset prior to running `organization/sort.py`.
-
-On Linux:
-```bash
-export DATASET=/path/to/dataset
-```
-
-On Windows:
-```bash
-set DATASET=/path/to/dataset
-```
+The `organization` directory also contains `sort.py`. This organizes the labels and images in your dataset into `train/` and `val/` subdirectories. 80% of images and their respective labels will go into the `train/` subdirectories, while the remaining 20% will be randomly organized into the `val/` subdirectories. It is vital that you do this prior to training to ensure even representation of data. Remember to update your .env file with relevant dataset/project JSON paths.
 
 ### This project is INCOMPLETE, there will be bugs!
 
