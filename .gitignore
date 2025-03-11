@@ -1,7 +1,9 @@
-dataset-omni/
-dataset-mites/
-.env
+dataset-*/
+organization/npy/
+organization/output/
+train/
 runs/
+.env
 *.png
 *.jpg
 *.jpeg
