@@ -1,4 +1,5 @@
-import comet_ml
+import os
+import sys
 import torch
 from ultralytics import YOLO
 import os
@@ -8,6 +9,14 @@ import os
 os.environ["COMET_PROJECT_NAME"] = "beehive-segment"
 os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"
 ######################################
+
+dataset = os.getenv("DATASET_SEGMENT")
+
+if dataset is not None:
+    print("Segment dataset selected as " + dataset)
+else:
+    print("No dataset specified in .env file")
+    sys.exit(1)
 
 model = YOLO("../models/yolo11-seg.yaml") # replace with weighted model 
 

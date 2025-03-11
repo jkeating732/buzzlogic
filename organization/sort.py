@@ -1,11 +1,23 @@
 import os
+import sys
 import shutil
 import random
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+dataset = os.getenv("WORKING_DATASET")
+
+if dataset is not None:
+    print("Working dataset selected as " + dataset)
+else:
+    print("No dataset specified in .env file")
+    sys.exit(1)
+
 def main():
-    base_dir = os.environ["DATASET"]
-    labels_dir = os.path.join(base_dir, 'labels')
-    images_dir = os.path.join(base_dir, 'images')
+    labels_dir = os.path.join(dataset, 'labels')
+    images_dir = os.path.join(dataset, 'images')
     
     # Create train and val directories if they don't exist
     for dir_path in [labels_dir, images_dir]:

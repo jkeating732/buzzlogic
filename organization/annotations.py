@@ -1,6 +1,26 @@
+import os
+import sys
 import json
+from dotenv import load_dotenv
 
-with open("../project.json") as f:  # Modify project.json path as needed
+load_dotenv()
+
+dataset = os.getenv("WORKING_DATASET")
+project = os.getenv("WORKING_PROJECT_FILE")
+
+if dataset is not None:
+    print("Working dataset selected as " + dataset)
+else:
+    print("No dataset specified in .env file")
+    sys.exit(1)
+
+if project is not None:
+    print("Working project selected as " + project)
+else:
+    print("No project file specified in .env file")
+    sys.exit(1)
+
+with open(project) as f:  # Modify project.json path as needed
     data = json.load(f)
 
 # Count occurrences of item in labels
