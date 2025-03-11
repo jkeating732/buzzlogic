@@ -1,5 +1,7 @@
 ## buzzlogic
-YOLO11 detect model for the modern beehive
+
+#### View training statistics for models at Comet.ml 
+[Detect Model (finds mites, classifies bees)](https://www.comet.com/whoffie/beehive/view) | [Segment Model (classifies cells, brood patterns)](https://www.comet.com/whoffie/beehive-segment/view)
 
 ### Ultralytics
 This model runs with the help of the Ultralytics Python library. If you are not familiar with the `train()` method or something else, I highly recommend you visit the [Ultralytics docs page](https://docs.ultralytics.com/modes/train/).
