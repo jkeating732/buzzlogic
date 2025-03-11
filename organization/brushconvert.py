@@ -1,10 +1,18 @@
-import json
 import os
+import sys
+import json
 import glob
 import numpy as np
 import cv2
 
-json_file = '../project.json'  # Path to Label Studio export JSON file
+project = os.getenv("WORKING_PROJECT_FILE")
+
+if project is not None:
+    print("Working project selected as " + project)
+else:
+    print("No project specified in .env file")
+    sys.exit(1)
+
 npy_dir = 'npy'
 output_dir = 'output'
 os.makedirs(output_dir, exist_ok=True)
