@@ -16,6 +16,10 @@ if args.annotation is None:
     print("Please specify an annotation to search for, i.e. 'Mite' or 'Capped Honey'.")
     sys.exit(1)
 
+if args.annotation is not None and int(args.class_count) < 1:
+    print("Please specify a number of classes that is greater than zero")
+    sys.exit(1)
+
 term = args.annotation
 numClasses = int(args.class_count)
 
@@ -57,4 +61,6 @@ for task in data:
 
 print("Total number of " + term + " annotations: ", term_count)
 print("Total number of annotations: ", count)
-print("Calculated model weight: ", count / (numClasses * term_count))
+
+if term_count != 0:
+    print("Calculated model weight: ", count / (numClasses * term_count))
