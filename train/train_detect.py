@@ -1,5 +1,6 @@
 import os
 import sys
+import comet_ml
 import torch
 from ultralytics import YOLO
 from dotenv import load_dotenv
@@ -10,15 +11,15 @@ os.environ["COMET_PROJECT_NAME"] = "beehive"
 os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"
 ######################################
 
-dataset = os.getenv("DATASET_DETECT")
+weight = os.getenv("MODEL_DETECT")
 
-if dataset is not None:
-    print("Detect dataset selected as " + dataset)
+if weight is not None:
+    print("Model dataset selected as " + weight)
 else:
-    print("No dataset specified in .env file")
+    print("No model specified in .env file")
     sys.exit(1)
 
-model = YOLO("../models/model.pt") # replace with weighted model
+model = YOLO(weight)
 
 torch.cuda.empty_cache()
 

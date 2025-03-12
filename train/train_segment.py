@@ -1,8 +1,9 @@
 import os
 import sys
+import comet_ml
 import torch
 from ultralytics import YOLO
-import os
+from dotenv import load_dotenv
 
 ##### ONLY FOR USE WITH COMET.ML #####
 #####     https://comet.com      #####
@@ -10,21 +11,21 @@ os.environ["COMET_PROJECT_NAME"] = "beehive-segment"
 os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"
 ######################################
 
-dataset = os.getenv("DATASET_SEGMENT")
+weight = os.getenv("MODEL_SEGMENT")
 
-if dataset is not None:
-    print("Segment dataset selected as " + dataset)
+if weight is not None:
+    print("Segment model selected as " + weight)
 else:
-    print("No dataset specified in .env file")
+    print("No model specified in .env file")
     sys.exit(1)
 
-model = YOLO("../models/yolo11-seg.yaml") # replace with weighted model 
+model = YOLO(weight) # replace with weighted model 
 
 torch.cuda.empty_cache()
 
 results = model.train(data="../datasets/dataset_segment.yaml",
     task='segment',
-    epochs=600,
+    epochs=800,
     imgsz=1280, 
     batch=2, # small batch for now
     plots=True, 
@@ -32,7 +33,8 @@ results = model.train(data="../datasets/dataset_segment.yaml",
     visualize=True,
     save_period=10,
     patience=125,
-    cache=False # this helps stop OOM issues on my machine
+    cache=False, # this helps stop OOM issues on my machine
+    show_boxes=False
 )
 
 results = model.val()
