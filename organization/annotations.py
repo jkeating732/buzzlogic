@@ -51,7 +51,7 @@ for task in data:
             if term in labels:
                 term_count += 1
 
-            labels = result.get("value", {}).get("brushlabels", [])  # Extract brush labels
+            labels = result.get("value", {}).get("polygonlabels", [])  # Extract brush labels
             if term in labels:
                 term_count += 1
 
