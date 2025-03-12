@@ -1,7 +1,23 @@
 import os
 import sys
 import json
+import argparse
 from dotenv import load_dotenv
+
+parser = argparse.ArgumentParser(
+    prog='Annotation Counter',
+    description='A method to count the number of annotations for a class in project.json')
+
+parser.add_argument('-a', '--annotation', help="Name of the annotation to search")
+parser.add_argument('-c', '--class-count', help="Provide number of classes in the model in order to properly calculate model weight")
+args = parser.parse_args()
+
+if args.annotation is None:
+    print("Please specify an annotation to search for, i.e. 'Mite' or 'Capped Honey'.")
+    sys.exit(1)
+
+term = args.annotation
+numClasses = int(args.class_count)
 
 load_dotenv()
 
@@ -24,7 +40,6 @@ with open(project) as f:  # Modify project.json path as needed
     data = json.load(f)
 
 # Count occurrences of item in labels
-term = input("Class name (i.e. Mite, Queen):\n")
 term_count = 0
 count = 0
 
@@ -40,5 +55,6 @@ for task in data:
             if term in labels:
                 term_count += 1
 
-print("Total number of " + term + " annotations:", term_count)
-print("Total number of annotations:", count)
+print("Total number of " + term + " annotations: ", term_count)
+print("Total number of annotations: ", count)
+print("Calculated model weight: ", count / (numClasses * term_count))
