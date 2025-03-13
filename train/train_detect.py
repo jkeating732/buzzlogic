@@ -11,6 +11,8 @@ os.environ["COMET_PROJECT_NAME"] = "beehive"
 os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"
 ######################################
 
+load_dotenv()
+
 dirname = os.path.dirname(__file__)
 
 weight = os.getenv("MODEL_DETECT")

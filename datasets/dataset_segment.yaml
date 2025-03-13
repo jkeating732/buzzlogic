@@ -12,4 +12,4 @@ names: ['Capped Honey', 'Drone Brood', 'Queen Cell', 'Worker Brood']
 # You can find total annotations and annotations for a class by running annotations.py
 # Your project.json MUST be updated for this to properly work
 
-weights: [2.29464, 0.79320, 1.7847, 0.57366]
+weights: [2.485, 0.5918, 2.228947, 0.67968]

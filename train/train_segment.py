@@ -11,6 +11,8 @@ os.environ["COMET_PROJECT_NAME"] = "beehive-segment"
 os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"
 ######################################
 
+load_dotenv()
+
 dirname = os.path.dirname(__file__)
 
 weight = os.getenv("MODEL_SEGMENT")
@@ -27,14 +29,14 @@ torch.cuda.empty_cache()
 
 results = model.train(data=os.path.join(dirname, "../datasets/dataset_segment.yaml"),
     task='segment',
-    epochs=800,
-    imgsz=1280, 
-    batch=2, # small batch for now
+    epochs=1000,
+    imgsz=1560, 
+    batch=3,
     plots=True, 
     augment=True, 
     visualize=True,
     save_period=10,
-    patience=125,
+    patience=200,
     cache=False, # this helps stop OOM issues on my machine
     show_boxes=False
 )
