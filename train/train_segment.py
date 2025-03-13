@@ -11,6 +11,8 @@ os.environ["COMET_PROJECT_NAME"] = "beehive-segment"
 os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"
 ######################################
 
+dirname = os.path.dirname(__file__)
+
 weight = os.getenv("MODEL_SEGMENT")
 
 if weight is not None:
@@ -23,7 +25,7 @@ model = YOLO(weight) # replace with weighted model
 
 torch.cuda.empty_cache()
 
-results = model.train(data="../datasets/dataset_segment.yaml",
+results = model.train(data=os.path.join(dirname, "../datasets/dataset_segment.yaml"),
     task='segment',
     epochs=800,
     imgsz=1280, 

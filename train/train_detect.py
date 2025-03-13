@@ -11,6 +11,8 @@ os.environ["COMET_PROJECT_NAME"] = "beehive"
 os.environ["COMET_EVAL_BATCH_LOGGING_INTERVAL"] = "10"
 ######################################
 
+dirname = os.path.dirname(__file__)
+
 weight = os.getenv("MODEL_DETECT")
 
 if weight is not None:
@@ -23,7 +25,7 @@ model = YOLO(weight)
 
 torch.cuda.empty_cache()
 
-results = model.train(data="../datasets/dataset_detect.yaml",
+results = model.train(data=os.path.join(dirname, "../datasets/dataset_detect.yaml"),
     task='detect',
     epochs=600,
     imgsz=1280, 
