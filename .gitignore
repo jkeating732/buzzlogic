@@ -1,6 +1,7 @@
 dataset-*/
 organization/npy/
 organization/output/
+runs/
 train/runs/
 .env
 *.png
