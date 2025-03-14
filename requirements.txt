@@ -1,3 +1,4 @@
+dotenv==0.9.9
 comet_ml==3.49.4
 torch==2.6.0
 ultralytics==8.3.84
