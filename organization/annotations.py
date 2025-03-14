@@ -16,12 +16,16 @@ if args.annotation is None:
     print("Please specify an annotation to search for, i.e. 'Mite' or 'Capped Honey'.")
     sys.exit(1)
 
-if args.annotation is not None and int(args.class_count) < 1:
-    print("Please specify a number of classes that is greater than zero")
-    sys.exit(1)
+if args.class_count is not None:
+    if args.annotation is not None and int(args.class_count) < 1:
+        print("Please specify a number of classes that is greater than zero")
+        sys.exit(1)
 
 term = args.annotation
-numClasses = int(args.class_count)
+numClasses = None
+
+if args.class_count is not None:
+    numClasses = int(args.class_count)
 
 load_dotenv()
 
@@ -62,5 +66,5 @@ for task in data:
 print("Total number of " + term + " annotations: ", term_count)
 print("Total number of annotations: ", count)
 
-if term_count != 0:
+if term_count != 0 and numClasses is not None:
     print("Calculated model weight: ", count / (numClasses * term_count))
