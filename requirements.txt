@@ -1,3 +1,4 @@
+dotenv==0.9.9
 comet_ml==3.49.4
 matplotlib==3.10.1
 opencv_contrib_python==4.11.0.86
