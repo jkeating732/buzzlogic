@@ -29,16 +29,16 @@ torch.cuda.empty_cache()
 
 results = model.train(data=os.path.join(dirname, "../datasets/dataset_segment.yaml"),
     task='segment',
-    epochs=1000,
+    epochs=800,
     imgsz=1560, 
     batch=3,
     plots=True, 
     augment=True, 
+    auto_augment="randaugment",
     visualize=True,
     save_period=10,
-    patience=200,
-    cache=False, # this helps stop OOM issues on my machine
-    show_boxes=False
+    patience=0,
+    cache=False # this helps stop OOM issues on my machine
 )
 
 results = model.val()
