@@ -30,14 +30,14 @@ torch.cuda.empty_cache()
 results = model.train(data=os.path.join(dirname, "../datasets/dataset_segment.yaml"),
     task='segment',
     epochs=800,
-    imgsz=1560, 
+    imgsz=1568, 
     batch=3,
     plots=True, 
     augment=True, 
     auto_augment="albumentations",
     visualize=True,
     save_period=10,
-    patience=0,
+    patience=50,
     mosaic=0.0, # this should help eliminate "hard cutoffs" when making predictions
     crop_fraction=1.0, # disable cropping to stop continuity errors
     mask_ratio=2, # keep a large emphasis on segmentation accuracy
