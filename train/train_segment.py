@@ -34,10 +34,14 @@ results = model.train(data=os.path.join(dirname, "../datasets/dataset_segment.ya
     batch=3,
     plots=True, 
     augment=True, 
-    auto_augment="randaugment",
+    auto_augment="albumentations",
     visualize=True,
     save_period=10,
     patience=0,
+    mosaic=0.0, # this should help eliminate "hard cutoffs" when making predictions
+    crop_fraction=1.0, # disable cropping to stop continuity errors
+    mask_ratio=2, # keep a large emphasis on segmentation accuracy
+    cls=1.5,
     cache=False # this helps stop OOM issues on my machine
 )
 
