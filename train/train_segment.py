@@ -29,25 +29,26 @@ torch.cuda.empty_cache()
 
 results = model.train(data=os.path.join(dirname, "../datasets/dataset_segment.yaml"),
     task='segment',
-    epochs=800,
-    imgsz=1568, 
-    batch=3,
+    epochs=1000,
+    imgsz=1536, 
+    batch=4,
+    scale=0.5,
+    cls=1.5,
     plots=True, 
-    augment=True, 
-    auto_augment="albumentations",
-    visualize=True,
+    label_smoothing=0.1,
+    iou=0.2,
+    augment=True,
+    visualize=False,
     save_period=10,
     patience=50,
-    mosaic=0.0, # this should help eliminate "hard cutoffs" when making predictions
-    crop_fraction=1.0, # disable cropping to stop continuity errors
-    mask_ratio=2, # keep a large emphasis on segmentation accuracy
-    cls=1.5,
-    cache=False # this helps stop OOM issues on my machine
+    mosaic=0.0,
+    multi_scale=True,
+    degrees=10,
+    shear=2,
+    perspective=0.001,
+    hsv_h=0.015,
+    hsv_s=0.7,
+    hsv_v=0.4
 )
-
-results = model.val()
-results = model("https://drkilligans.com/cdn/shop/articles/Queen-bee-eggs-per-day_bdd109b5-e957-41ba-9994-9efd31c584a6.png") # test when done
-
-results[0].show()
 
 success = model.export(format="onnx")
